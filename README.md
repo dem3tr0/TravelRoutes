@@ -16,9 +16,15 @@
 ### 1.1 Установка Python
 Скачайте и установите [Python](https://www.python.org/downloads/) версии не менее 3.13. Проверить корректность установки можно командой в cmd (powershell): ``` python --version pip --version ``` 
 #### 1.2 Установка PostgreSQL и PgAdmin
-Скачайте и установите [PostrgeSQL](https://www.postgresql.org/download/) версии не менее 17.3. При установке также выберите пункт с PgAdmin. Запустите PgAdmin для проверки корректности установки: 
-- Введите пароль, который будет далее использоваться вами для взаимодействия с БД. 
-- Убедитесь, что по следующему пути (в интерфейсе PgAdmin) у вас имеется хотя бы 1 база данных: Server -> PostgreSQL -> Databases 
+Скачайте и установите [PostrgeSQL](https://www.postgresql.org/download/) версии не менее 17.3. 
+![При установке также выберите пункт с PgAdmin.](Images\PgAdmin.png)
+Запустите PgAdmin для проверки корректности установки:
+Введите пароль, который будет далее использоваться вами для взаимодействия с БД.
+![](Images\Password.png)
+Впишите в поле "Port" 5432
+![](Images\PostgrePort.png)
+Убедитесь, что по следующему пути в интерфейсе PgAdmin (Server -> PostgreSQL -> Databases ) у вас имеется хотя бы 1 база данных:
+![](Images\CheckPgAdmin.png)
 ### 1.3 Установка Ngnix
 Скачайте и установите [Ngnix](https://nginx.org/ru/download.html) версии не менее 1.27.4.
 ### 1.4 Установка Node JS 
