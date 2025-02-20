@@ -13,6 +13,7 @@
  - Nginx 1.27.4
  - NodeJS 22.14.0 LTS
 
+> P.S. Установка Nginx и репозиториев веб-приложения выполняется в выделенную папку на вашем    
 ### 1.1 Установка Python
 Скачайте и установите [Python](https://www.python.org/downloads/) версии не менее 3.13. Проверить корректность установки можно командой в cmd (powershell): ``` python --version pip --version ``` 
 #### 1.2 Установка PostgreSQL и PgAdmin
@@ -74,5 +75,72 @@ pip install -r requirements.txt
 ```
 Это может занять какое-то время.
 ## 4. Запуск frontend'а и backend'a
-## 5. Настройка Nginx
-Nginx мы используем для настройки обратного проксирования на локальном хосте компьютера, т. к. все запускается локально.
+## 6. Настройка Nginx
+Как уже было сказано в начале инструкции, все веб-приложение запускается локально, поэтому для доступа к его обеим частям (backend, frontend) по одному домену нам нужно настроить обратное проксирование. Для этого мы воспользуемся Nginx.
+
+Перейдем в папку, где мы установили Nginx:
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Nginx1.png)
+
+Откроем папку conf
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/NginxConf.png)
+
+Откроем файл `nginx.conf` как текстовый файл в любом текстовом редакторе, например в Visual Studio Code (хотя можно и в обчном блокноте). Вместо того, что написано в этом файле вам надо вставить конфигурацию ниже: 
+```nginx
+worker_processes 1;
+events  {
+	worker_connections  1024;
+}
+http  {
+	include mime.types;
+	default_type application/octet-stream;
+	sendfile on;
+	keepalive_timeout  65;
+	
+	upstream backend {
+		server localhost:8000;
+	}
+	
+	upstream frontend {
+		server localhost:3000;
+	}
+	
+	server  {
+		listen  80;
+		server_name localhost;
+		location /api/ {
+			proxy_pass  http://backend;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+
+		location / {
+			proxy_pass  http://frontend;
+			proxy_set_header Host $host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Forwarded-Proto $scheme;
+		}
+		
+		error_page  500  502  503  504 /50x.html;
+
+		location = /50x.html {
+		root html;
+		}
+	}
+}
+```
+Далее зайдем обратно в терминал и перейдем в корневую папку nginx:
+```powershell
+cd ПолныйПутьКПапкеПроекта\nginx
+```
+
+И заупстим файл `nginx.exe` командой:
+```powershell
+nginx.exe
+```
+
+Теперь мы можем проверить работу, зайдя в браузер и перейдя по адресу: `http://localhost`
