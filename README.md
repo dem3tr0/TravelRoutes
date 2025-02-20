@@ -80,11 +80,11 @@ pip install -r requirements.txt
 
 Перейдем в папку, где мы установили Nginx:
 
-![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Nginx1.png)
+![](Images/Nginx1.png)
 
 Откроем папку conf
 
-![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/NginxConf.png)
+![](Images/NginxConf.png)
 
 Откроем файл `nginx.conf` как текстовый файл в любом текстовом редакторе, например в Visual Studio Code (хотя можно и в обчном блокноте). Вместо того, что написано в этом файле вам надо вставить конфигурацию ниже: 
 ```nginx
