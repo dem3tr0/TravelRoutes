@@ -60,7 +60,7 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'travelRoutes', 
+        'NAME': 'travelrts', 
         'USER': 'postgres',
         'PASSWORD': 'dk616123',
         'HOST': 'localhost',
