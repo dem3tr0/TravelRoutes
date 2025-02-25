@@ -15,7 +15,10 @@
 
 > ВАЖНО!!! Установка Nginx и репозиториев веб-приложения выполняется в выделенную папку на вашем устройстве   
 ### 1.1 Установка Python
-Скачайте и установите [Python](https://www.python.org/downloads/) версии не менее 3.13. Проверить корректность установки можно командой в cmd (powershell): ``` python --version pip --version ``` 
+Скачайте и установите [Python](https://www.python.org/downloads/) версии не менее 3.13. Проверить корректность установки можно командой в cmd (powershell): 
+``` 
+python --version pip --version
+``` 
 #### 1.2 Установка PostgreSQL и PgAdmin
 Скачайте и установите [PostrgeSQL](https://www.postgresql.org/download/) версии 16 и выше. Начните установку. При выборе дополнительных компонентов обязательно укажите `pgAdmin 4`.
 
