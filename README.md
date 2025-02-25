@@ -136,8 +136,10 @@ pip install -r requirements.txt
 cd TravelRoutes-Backend
 ```
 Последовательно выполним команды для миграции:
-```
+```powershell
 python manage.py makemigrations
+```
+```powershell
 python manage.py migrate
 ```
 ### 4.2 Запуск backend
