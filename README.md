@@ -130,9 +130,47 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 Это может занять какое-то время.
-## 4. Запуск frontend'а и backend'a
+## 4. Подключение API-ключа
+Для корректной работы функционала карты необходимо подключить собственный API-ключ.
+### 4.1 Получение API-ключа
+
+Авторизуйтесь на [данном сайте](https://developer.tech.yandex.ru/)
+Нажмите на кнопку "Покдлючить API".
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key1.png)
+
+Выберите из предложенного списка самый первый пункт "JavaScript API и HTTP Геокодер".
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key2.png)
+
+Заполните необходимые поля. 
+В поле с "Кратким описанием сервиса" выпишите: "API будет использован в веб-приложении для участия в международном фествиале «Технострелка»".
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key3.png)
+
+Далее нажмите на кнопку "Перейти к API".
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key4.png)
+
+Вас переведёт на страницу кабинета разработчка. Скопируйте полученный ключ .
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key5.png)
+
+### 4.2 Вставка API-ключа
+
+Перейдите по следующему пути:
+Полный_Путь_К_Папке_Проекта\TravelRoutes\TravelRoutes-Frontend\public
+Откройте файл ***index.html***
+
+В строчке "<script src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=************"" замените звёздчоки на полученный ранее API-ключ.
+
+![](https://github.com/dem3tr0/TravelRoutes/raw/main/Images/Key6.png)
+
+Не забудьте сохранить файл, после внесённых изменений.
+
+## 5. Запуск frontend'а и backend'a
 Приступим к запуску frontend'a и backend'a
-### 4.1 Применение миграций
+### 5.1 Применение миграций
 Перед запуском бэкенда нам нужно применить миграции к базе данных, то есть, чтобы создались необходимые таблицы для корректной работы.
 Перейдем в корневую папку бэкенда:
 ```powershell
@@ -145,7 +183,7 @@ python manage.py makemigrations
 ```powershell
 python manage.py migrate
 ```
-### 4.2 Запуск backend
+### 5.2 Запуск backend
 Перейдем в корневую папку бэкенда:
 ```powershell
 cd TravelRoutes-Backend
@@ -155,7 +193,7 @@ cd TravelRoutes-Backend
 python manage.py runserver
 ```
 > ВАЖНО!!! Не закрывайте терминал с введёнными командами, без него приложение работать не будет!
-### 4.3 Запуск frontend
+### 5.3 Запуск frontend
 Запустим **НОВЫЙ** терминал. Перейдем в корневую папку фронтэнда:
 ```powershell
 cd TravelRoutes-Frontend
@@ -165,7 +203,7 @@ cd TravelRoutes-Frontend
 npm start
 ```
 > ВАЖНО!!! Не закрывайте терминал с введёнными командами, без него приложение работать не будет!
-## 5. Настройка Nginx
+## 6. Настройка Nginx
 Как уже было сказано в начале инструкции, все веб-приложение запускается локально, поэтому для доступа к его обеим частям (backend, frontend) по одному домену нам нужно настроить обратное проксирование. Для этого мы воспользуемся Nginx.
 
 Перейдем в папку, где мы установили Nginx:
