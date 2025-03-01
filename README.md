@@ -93,13 +93,7 @@ cd TravelRoutes-Frontend
 ```
 Устанавливаем компоненты (команды выполняем последовательно):
 ```powershell
-npm install
-```
-```powershell
-npm install bootstrap
-```
-```powershell
-npm install react-router-dom
+npm install --legacy-peer-deps
 ```
 ### 3.2 Компоненты Django приложения
 Опять же для корректной работы backend'a мы должны установить все компоненты, только уже с помощью встроенного пакетного менеджера pip. Перейдем в корневую папку бэкенд приложения:
